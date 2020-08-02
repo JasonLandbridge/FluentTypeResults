@@ -1,4 +1,4 @@
-import ResultBaseGeneric from '~/base/resultBaseTValue.ts';
+import ResultBaseGeneric from '@base/resultBaseTValue.ts';
 
 export default class Result extends ResultBaseGeneric<Result> {
 	/**

@@ -1,6 +1,6 @@
-import ResultBase from './resultBase';
-import Reason from '~/reasons/reason';
-import Result from '~/results/result';
+import ResultBase from '@base/resultBase';
+import Reason from '@reasons/reason';
+import Result from '@results/result';
 
 export default class ResultBaseGeneric<TResult extends Result> extends ResultBase {
 

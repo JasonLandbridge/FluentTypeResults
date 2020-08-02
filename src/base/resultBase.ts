@@ -1,5 +1,5 @@
-import Reason from '~/reasons/reason';
-import Success from '~/reasons/success';
+import Reason from '@reasons/reason';
+import Success from '@reasons/success';
 
 export default class ResultBase {
 	// #region Properties (1)

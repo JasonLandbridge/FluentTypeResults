@@ -1,5 +1,3 @@
-import Dictionary from '@base/dictionary';
-
 export default class Reason {
 	// #region Properties (2)
 

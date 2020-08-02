@@ -1,7 +1,19 @@
 {
 	"transform": {
-	  "^.+\\.(t|j)sx?$": "ts-jest"
+		"^.+\\.(t|j)sx?$": "ts-jest"
 	},
 	"testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-	"moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
-  }
+	"moduleFileExtensions": [
+		"ts",
+		"tsx",
+		"js",
+		"jsx",
+		"json",
+		"node"
+	],
+	"moduleNameMapper": {
+		"^@base/(.*)$": "<rootDir>/src/base/$1",
+		"^@reasons/(.*)$": "<rootDir>/src/reasons/$1",
+		"^@results/(.*)$": "<rootDir>/src/results/$1"
+	}
+}

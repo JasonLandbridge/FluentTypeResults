@@ -1,6 +1,6 @@
-import ResultBaseGeneric from '~/base/resultBaseTValue.ts';
+import ResultBaseGeneric from '@base/resultBaseTValue.ts';
 
-export default class Result<TValue extends object> extends ResultBaseGeneric<Result<TValue>> {
+export default class Result<TValue> extends ResultBaseGeneric<Result<TValue>> {
 	// #region Properties (1)
 
 	private _value: TValue | null = null;
@@ -43,7 +43,7 @@ export default class Result<TValue extends object> extends ResultBaseGeneric<Res
 
 	// #region Public Methods (1)
 
-	ToResult<TNewValue extends object>(): Result<TNewValue> {
+	ToResult<TNewValue>(): Result<TNewValue> {
 		return new Result<TNewValue>().WithReasons(this.Reasons);
 	}
 
@@ -58,23 +58,29 @@ export default class Result<TValue extends object> extends ResultBaseGeneric<Res
 	// #endregion Public Methods (1)
 
 
-	public static Ok<TValue extends object>(): Result<TValue> {
+	public static Ok<TValue>(): Result<TValue> {
 		return new Result<TValue>();
 	}
 
-	public static Fail<TValue extends object>(error: Error): Result<TValue> {
+	public static Fail<TValue>(error: Error): Result<TValue> {
 		return new Result<TValue>().WithError(error);
 	}
 
-	public static FailFromMsg<TValue extends object>(errorMessage: string): Result<TValue> {
+	public static FailFromMsg<TValue>(errorMessage: string): Result<TValue> {
 		return new Result<TValue>().WithError(new Error(errorMessage));
 	}
 
-	public Merge<TValue extends object>(result: Result<TValue>): Result<TValue> {
+	public Merge(result: Result<TValue>): Result<TValue> {
+		this.WithReasons(result.Reasons);
+		return this;
+	}
+
+	public MergeWithValue<TNewValue>(result: Result<TValue>): Result<TValue> {
 
 		this.WithReasons(result.Reasons)
 		if (result.Value) {
-			// this.Value = result.Value;
+			// TODO Check if this type is set correctly
+			this.Value = result.Value;
 		}
 		// TODO Check if the conversion is happening correctly
 		return (this as unknown) as Result<TValue>;

@@ -7,14 +7,17 @@
 		"strict": true,
 		"baseUrl": "./src/",
 		"paths": {
-			"~/*": [
-				"./*"
-			],
 			"@/*": [
 				"./*"
 			],
 			"@base/*": [
 				"./base/*"
+			],
+			"@reasons/*": [
+				"./reasons/*"
+			],
+			"@results/*": [
+				"./results/*"
 			],
 		},
 	},
