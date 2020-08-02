@@ -11,6 +11,8 @@ test('Result.Ok(testObject)', () => {
   expect(okResult).not.toBeNull();
   expect(okResult.value).toBe(testObject);
   expect(okResult.valueOrDefault).toBe(testObject);
+  expect(okResult.isFailed).toBeFalsy();
+  expect(okResult.isSuccess).toBeTruthy();
 });
 
 test('Result.OkWithValue<TestClass>(testObject)', () => {
@@ -18,16 +20,20 @@ test('Result.OkWithValue<TestClass>(testObject)', () => {
   expect(okResult).not.toBeNull();
   expect(okResult.value).toBe(testObject);
   expect(okResult.valueOrDefault).toBe(testObject);
+  expect(okResult.isFailed).toBeFalsy();
+  expect(okResult.isSuccess).toBeTruthy();
 });
 
 test('Result.Fail(new Error(This Is An Error Message))', () => {
-  const errorMsg = 'This Is An Error Message';
+	const errorMsg = 'This Is An Error Message';
   const resultFail = Result.Fail(new Error(errorMsg));
   expect(resultFail).not.toBeNull();
   expect(resultFail.value).toBeNull();
   expect(resultFail.valueOrDefault).toBeNull();
   expect(resultFail.reasons.length).toBe(1);
   expect(resultFail.errors.length).toBe(1);
+  expect(resultFail.isFailed).toBeTruthy();
+  expect(resultFail.isSuccess).toBeFalsy();
   expect(resultFail.reasons.filter((x) => x.message === errorMsg).length).toBeGreaterThan(0);
 });
 
@@ -39,6 +45,8 @@ test('Result.Fail<TestClass>(new Error(This Is An Error Message))', () => {
   expect(resultFail.valueOrDefault).toBeNull();
   expect(resultFail.reasons.length).toBe(1);
   expect(resultFail.errors.length).toBe(1);
+  expect(resultFail.isFailed).toBeTruthy();
+  expect(resultFail.isSuccess).toBeFalsy();
   expect(resultFail.reasons.filter((x) => x.message === errorMsg).length).toBeGreaterThan(0);
 });
 
@@ -50,6 +58,8 @@ test('Result.FailFromMsg(This Is An Error Message)', () => {
   expect(resultFail.valueOrDefault).toBeNull();
   expect(resultFail.reasons.length).toBe(1);
   expect(resultFail.errors.length).toBe(1);
+  expect(resultFail.isFailed).toBeTruthy();
+  expect(resultFail.isSuccess).toBeFalsy();
   expect(resultFail.reasons.filter((x) => x.message === errorMsg).length).toBeGreaterThan(0);
 });
 
@@ -61,5 +71,7 @@ test('Result.FailFromMsg<TestClass>(This Is An Error Message)', () => {
   expect(resultFail.valueOrDefault).toBeNull();
   expect(resultFail.reasons.length).toBe(1);
   expect(resultFail.errors.length).toBe(1);
+  expect(resultFail.isFailed).toBeTruthy();
+  expect(resultFail.isSuccess).toBeFalsy();
   expect(resultFail.reasons.filter((x) => x.message === errorMsg).length).toBeGreaterThan(0);
 });
