@@ -25,7 +25,7 @@ test('Result.OkWithValue<TestClass>(testObject)', () => {
 });
 
 test('Result.Fail(new Error(This Is An Error Message))', () => {
-	const errorMsg = 'This Is An Error Message';
+  const errorMsg = 'This Is An Error Message';
   const resultFail = Result.Fail(new Error(errorMsg));
   expect(resultFail).not.toBeNull();
   expect(resultFail.value).toBeNull();
