@@ -1,8 +1,6 @@
+import Result from '@results/result';
+import ResultTValue from '@results/resultTValue';
 
-export const Greeter = (name: string) => `Hello ${name}`;
+export default Result;
 
-
-
-
-
-
+export { ResultTValue };

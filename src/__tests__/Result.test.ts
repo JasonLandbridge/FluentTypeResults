@@ -1,9 +1,8 @@
 import Result from '../results/result';
+import ResultTValue from '../results/resultTValue';
 
-import { Greeter } from '../index';
+Result.Ok();
 
-test('My Greeter', () => {
-	expect(Greeter('Carl')).toBe('Hello Carl');
+test('Result.Ok()', () => {
+  expect(Result.Ok()).not.toBeNull();
 });
-
-Result.Ok()

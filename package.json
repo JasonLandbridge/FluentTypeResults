@@ -1,14 +1,15 @@
 {
 	"name": "fluent-type-results",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "FluentTypeResults is a lightweight Typescript library built to solve a common problem - returning an object to either indicate success or failure of an operation instead of using exceptions.",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
 	"scripts": {
 		"test": "jest --config jestconfig.json",
 		"build": "tsc",
-		"format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+		"format": "prettier --write \"src/**/*.ts\"",
 		"lint": "tslint -p tsconfig.json",
+		"update-publish": "npm version patch && npm publish",
 		"prepare": "npm run build",
 		"prepublishOnly": "npm test && npm run lint",
 		"preversion": "npm run lint",
@@ -19,7 +20,10 @@
 		"type": "git",
 		"url": "git+https://github.com/JasonLandbridge/FluentTypeResults.git"
 	},
-	"keywords": ["Typescript", "FluentResult"],
+	"keywords": [
+		"Typescript",
+		"FluentResult"
+	],
 	"author": "JasonLandbridge",
 	"license": "ISC",
 	"bugs": {
