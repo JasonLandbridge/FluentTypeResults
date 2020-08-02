@@ -1,5 +1,5 @@
 export default class TestClass {
-  private _text: string;
+  private _text: string = "";
   public get Text(): string {
     return this._text;
   }
@@ -7,7 +7,7 @@ export default class TestClass {
     this._text = v;
   }
 
-  private _number: number;
+  private _number: number = 0;
   public get Number(): number {
     return this._number;
   }
