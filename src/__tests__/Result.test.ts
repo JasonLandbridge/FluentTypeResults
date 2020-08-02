@@ -1,4 +1,4 @@
-import TestClass from './testClass';
+import TestClass from '../base/testClass';
 import { Result } from '../../src';
 
 Result.Ok();
