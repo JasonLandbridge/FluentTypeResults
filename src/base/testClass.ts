@@ -1,5 +1,5 @@
 export default class TestClass {
-  private _text: string = "";
+  private _text: string = '';
   public get Text(): string {
     return this._text;
   }
