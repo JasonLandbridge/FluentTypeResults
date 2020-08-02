@@ -1,6 +1,7 @@
-import ResultBase from '@base/resultBase';
-import Reason from '@reasons/reason';
+import ResultBase from '../base/resultBase';
 import Result from '..';
+import Reason from '../reasons/reason';
+import Error from '../reasons/error';
 
 export default class ResultBaseGeneric<TResult extends Result> extends ResultBase {
   public withReason(reason: Reason): TResult {

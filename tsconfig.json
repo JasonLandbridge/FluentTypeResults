@@ -5,21 +5,7 @@
 		"declaration": true,
 		"outDir": "./lib",
 		"strict": true,
-		"baseUrl": "./src/",
-		"paths": {
-			"@/*": [
-				"./*"
-			],
-			"@base/*": [
-				"./base/*"
-			],
-			"@reasons/*": [
-				"./reasons/*"
-			],
-			"@results/*": [
-				"./results/*"
-			],
-		},
+		"baseUrl": "./src/"
 	},
 	"include": [
 		"src"

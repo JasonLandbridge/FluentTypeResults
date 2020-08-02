@@ -1,4 +1,5 @@
-import ResultBaseGeneric from '@base/resultBaseTValue.ts';
+import ResultBaseGeneric from './base/resultBaseTValue';
+import Error from './reasons/error';
 
 // tslint:disable-next-line: max-classes-per-file
 export default class Result<TValue = any> extends ResultBaseGeneric<Result<TValue>> {
@@ -49,9 +50,10 @@ export default class Result<TValue = any> extends ResultBaseGeneric<Result<TValu
     return new Result<TValue>().withError(new Error(errorMessage));
   }
 
-  // TODO add "public Result<TNewValue> ToResult<TNewValue>(Func<TValue, TNewValue> valueConverter = null)"
-  public static Ok<TValue = any>(): Result<TValue> {
-    return new Result<TValue>();
+  public static Ok<TValue = any>(value: TValue): Result<TValue> {
+	const result = new Result<TValue>();
+	result.value = value;
+	return result;
   }
 
   // #endregion Public Static Methods (3)

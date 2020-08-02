@@ -1,5 +1,5 @@
-import Reason from '@reasons/reason';
-import Success from '@reasons/success';
+import Reason from '../reasons/reason';
+import Success from '../reasons/success';
 
 export default class ResultBase {
   // #region Properties (1)
@@ -24,12 +24,12 @@ export default class ResultBase {
 
   public get errors(): Error[] {
     // TODO This conversion from Reason to Error might need to be checked
-    return this._reasons.filter((x) => typeof x === typeof Error).map((x) => (x as unknown) as Error);
+    return this._reasons.filter((x) => x.type === 'Error').map((x) => (x as unknown) as Error);
   }
 
   public get successes(): Success[] {
     // TODO This conversion from Reason to Error might need to be checked
-    return this._reasons.filter((x) => typeof x === typeof Success).map((x) => (x as unknown) as Success);
+    return this._reasons.filter((x) => x.type === 'Success').map((x) => (x as unknown) as Success);
   }
 
   // #endregion Public Accessors (2)

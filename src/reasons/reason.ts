@@ -20,6 +20,10 @@ export default class Reason {
     this._metadata = v;
   }
 
+  public get type(): string {
+	  return 'Reason';
+  }
+  
   // #endregion Public Accessors (3)
 
   public hasMetaDataKey(key: string): boolean {

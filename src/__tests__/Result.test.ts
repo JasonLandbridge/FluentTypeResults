@@ -1,10 +1,69 @@
 import TestClass from '../base/testClass';
 import Result from '../../src';
+import Error from '../reasons/error';
 
-Result.Ok();
+const testObject = new TestClass();
+testObject.Number = 123456789;
+testObject.Text = 'This is some random text';
 
-test('Result.Ok()', () => {
-  expect(Result.Ok()).not.toBeNull();
+
+
+
+test('Result.Ok(testObject)', () => {
+	const okResult = Result.Ok(testObject);
+	expect(okResult).not.toBeNull();
+	expect(okResult.value).toBe(testObject);
+	expect(okResult.valueOrDefault).toBe(testObject);
 });
 
-const result = Result.Ok<TestClass>();
+test('Result.OkWithValue<TestClass>(testObject)', () => {
+	const okResult = Result.Ok<TestClass>(testObject);
+	expect(okResult).not.toBeNull();
+	expect(okResult.value).toBe(testObject);
+	expect(okResult.valueOrDefault).toBe(testObject);
+});
+
+test('Result.Fail(new Error(This Is An Error Message))', () => {
+	const errorMsg = 'This Is An Error Message';
+	const resultFail = Result.Fail(new Error(errorMsg));
+	expect(resultFail).not.toBeNull();
+	expect(resultFail.value).toBeNull();
+	expect(resultFail.valueOrDefault).toBeNull();
+	expect(resultFail.reasons.length).toBe(1);
+	expect(resultFail.errors.length).toBe(1);
+	expect(resultFail.reasons.filter(x => x.message === errorMsg).length).toBeGreaterThan(0);
+});
+
+test('Result.Fail<TestClass>(new Error(This Is An Error Message))', () => {
+	const errorMsg = 'This Is An Error Message';
+	const resultFail = Result.Fail<TestClass>(new Error(errorMsg));
+	expect(resultFail).not.toBeNull();
+	expect(resultFail.value).toBeNull();
+	expect(resultFail.valueOrDefault).toBeNull();
+	expect(resultFail.reasons.length).toBe(1);
+	expect(resultFail.errors.length).toBe(1);
+	expect(resultFail.reasons.filter(x => x.message === errorMsg).length).toBeGreaterThan(0);
+});
+
+test('Result.FailFromMsg(This Is An Error Message)', () => {
+	const errorMsg = 'This Is An Error Message';
+	const resultFail = Result.FailFromMsg(errorMsg);
+	expect(resultFail).not.toBeNull();
+	expect(resultFail.value).toBeNull();
+	expect(resultFail.valueOrDefault).toBeNull();
+	expect(resultFail.reasons.length).toBe(1);
+	expect(resultFail.errors.length).toBe(1);
+	expect(resultFail.reasons.filter(x => x.message === errorMsg).length).toBeGreaterThan(0);
+});
+
+test('Result.FailFromMsg<TestClass>(This Is An Error Message)', () => {
+	const errorMsg = 'This Is An Error Message';
+	const resultFail = Result.FailFromMsg<TestClass>(errorMsg);
+	expect(resultFail).not.toBeNull();
+	expect(resultFail.value).toBeNull();
+	expect(resultFail.valueOrDefault).toBeNull();
+	expect(resultFail.reasons.length).toBe(1);
+	expect(resultFail.errors.length).toBe(1);
+	expect(resultFail.reasons.filter(x => x.message === errorMsg).length).toBeGreaterThan(0);
+});
+
