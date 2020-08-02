@@ -10,9 +10,6 @@ export class Result<TValue=any> extends ResultBaseGeneric<Result<TValue>> {
 
 	// #region Constructors (1)
 
-	/**
-	 *
-	 */
 	protected constructor() {
 		super();
 	}
