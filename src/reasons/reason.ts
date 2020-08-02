@@ -21,9 +21,9 @@ export default class Reason {
   }
 
   public get type(): string {
-	  return 'Reason';
+    return 'Reason';
   }
-  
+
   // #endregion Public Accessors (3)
 
   public hasMetaDataKey(key: string): boolean {

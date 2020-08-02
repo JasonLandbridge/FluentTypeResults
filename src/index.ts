@@ -51,9 +51,9 @@ export default class Result<TValue = any> extends ResultBaseGeneric<Result<TValu
   }
 
   public static Ok<TValue = any>(value: TValue): Result<TValue> {
-	const result = new Result<TValue>();
-	result.value = value;
-	return result;
+    const result = new Result<TValue>();
+    result.value = value;
+    return result;
   }
 
   // #endregion Public Static Methods (3)
