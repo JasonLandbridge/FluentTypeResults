@@ -1,5 +1,5 @@
 import TestClass from '../base/testClass';
-import { Result } from '../../src';
+import Result from '../../src';
 
 Result.Ok();
 

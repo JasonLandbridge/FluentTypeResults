@@ -9,7 +9,7 @@ export default class Error extends Reason {
 
   // #region Public Accessors (1)
 
-  public get Reasons(): Error[] {
+  public get reasons(): Error[] {
     return this._reasons;
   }
 
@@ -26,12 +26,12 @@ export default class Error extends Reason {
     }
   }
 
-  public CausedBy(error: Error): Error {
+  public causedBy(error: Error): Error {
     this._reasons.push(error);
     return this;
   }
 
-  public CausedByFromMessage(message: string): Error {
+  public causedByFromMessage(message: string): Error {
     this._reasons.push(new Error(message));
     return this;
   }
@@ -48,17 +48,17 @@ export default class Error extends Reason {
   // 	return this;
   // }
 
-  public WithMessage(message: string): Error {
+  public withMessage(message: string): Error {
     this._message = message;
     return this;
   }
 
-  public WithMetadata(metadataName: string, metadataValue: object): Error {
+  public withMetadata(metadataName: string, metadataValue: object): Error {
     this._metadata.set(metadataName, metadataValue);
     return this;
   }
 
-  public FromMetadata(metadata: Map<string, object>): Error {
+  public fromMetadata(metadata: Map<string, object>): Error {
     for (const [_key, _value] of this._metadata) {
       this._metadata.set(_key, _value);
     }

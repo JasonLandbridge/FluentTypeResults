@@ -1,29 +1,29 @@
 import ResultBase from '@base/resultBase';
 import Reason from '@reasons/reason';
-import { Result } from '..';
+import Result from '..';
 
 export default class ResultBaseGeneric<TResult extends Result> extends ResultBase {
-  public WithReason(reason: Reason): TResult {
-    this.Reasons.push(reason);
+  public withReason(reason: Reason): TResult {
+    this.reasons.push(reason);
     // TODO Check if the conversion is happening correctly
     return (this as unknown) as TResult;
   }
 
-  public WithReasons(reasons: Reason[]): TResult {
+  public withReasons(reasons: Reason[]): TResult {
     reasons.forEach((reason) => {
-      this.WithReason(reason);
+      this.withReason(reason);
     });
 
     // TODO Check if the conversion is happening correctly
     return (this as unknown) as TResult;
   }
 
-  public WithError(error: Error): TResult {
+  public withError(error: Error): TResult {
     // TODO Check if the conversion is happening correctly
-    return this.WithReason((error as unknown) as Reason);
+    return this.withReason((error as unknown) as Reason);
   }
 
-  public WithErrorFromMsg(errorMessage: string): TResult {
-    return this.WithError(new Error(errorMessage));
+  public withErrorFromMsg(errorMessage: string): TResult {
+    return this.withError(new Error(errorMessage));
   }
 }

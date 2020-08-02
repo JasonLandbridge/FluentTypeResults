@@ -8,28 +8,28 @@ export default class Reason {
 
   // #region Public Accessors (3)
 
-  public get Message(): string {
+  public get message(): string {
     return this._message;
   }
 
-  public get Metadata(): Map<string, object> {
+  public get metadata(): Map<string, object> {
     return this._metadata;
   }
 
-  protected set metadata(v: Map<string, object>) {
+  public set metadata(v: Map<string, object>) {
     this._metadata = v;
   }
 
   // #endregion Public Accessors (3)
 
-  public HasMetaDataKey(key: string): boolean {
+  public hasMetaDataKey(key: string): boolean {
     if (!key) {
       return false;
     }
     return this._metadata.has(key);
   }
 
-  public HasMetaData(key: string, predicate: (obj: object) => boolean): boolean {
+  public hasMetaData(key: string, predicate: (obj: object) => boolean): boolean {
     if (!key) {
       return false;
     }

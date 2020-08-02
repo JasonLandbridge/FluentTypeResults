@@ -10,24 +10,24 @@ export default class ResultBase {
 
   // #region Public Accessors (2)
 
-  public get IsFailed(): boolean {
-    return this.Errors.length > 0;
+  public get isFailed(): boolean {
+    return this.errors.length > 0;
   }
 
-  public get IsSuccess(): boolean {
-    return !this.IsFailed;
+  public get isSuccess(): boolean {
+    return !this.isFailed;
   }
 
-  public get Reasons(): Reason[] {
+  public get reasons(): Reason[] {
     return this._reasons;
   }
 
-  public get Errors(): Error[] {
+  public get errors(): Error[] {
     // TODO This conversion from Reason to Error might need to be checked
     return this._reasons.filter((x) => typeof x === typeof Error).map((x) => (x as unknown) as Error);
   }
 
-  public get Successes(): Success[] {
+  public get successes(): Success[] {
     // TODO This conversion from Reason to Error might need to be checked
     return this._reasons.filter((x) => typeof x === typeof Success).map((x) => (x as unknown) as Success);
   }

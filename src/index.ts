@@ -1,7 +1,7 @@
 import ResultBaseGeneric from '@base/resultBaseTValue.ts';
 
 // tslint:disable-next-line: max-classes-per-file
-export class Result<TValue = any> extends ResultBaseGeneric<Result<TValue>> {
+export default class Result<TValue = any> extends ResultBaseGeneric<Result<TValue>> {
   // #region Properties (1)
 
   private _value: TValue | null = null;
@@ -18,22 +18,22 @@ export class Result<TValue = any> extends ResultBaseGeneric<Result<TValue>> {
 
   // #region Public Accessors (3)
 
-  public get Value(): TValue | null {
-    if (this.IsFailed) {
+  public get value(): TValue | null {
+    if (this.isFailed) {
       // TODO add logging to signal that the this Result has failed and thus the value is null
     }
     return this._value;
   }
 
-  public set Value(v: TValue | null) {
-    if (this.IsFailed) {
+  public set value(v: TValue | null) {
+    if (this.isFailed) {
       // TODO add logging to signal that the this Result has failed and thus the value is not set
       return;
     }
     this._value = v;
   }
 
-  public get ValueOrDefault(): TValue | null {
+  public get valueOrDefault(): TValue | null {
     return this._value;
   }
 
@@ -42,11 +42,11 @@ export class Result<TValue = any> extends ResultBaseGeneric<Result<TValue>> {
   // #region Public Static Methods (3)
 
   public static Fail<TValue = any>(error: Error): Result<TValue> {
-    return new Result<TValue>().WithError(error);
+    return new Result<TValue>().withError(error);
   }
 
   public static FailFromMsg<TValue = any>(errorMessage: string): Result<TValue> {
-    return new Result<TValue>().WithError(new Error(errorMessage));
+    return new Result<TValue>().withError(new Error(errorMessage));
   }
 
   // TODO add "public Result<TNewValue> ToResult<TNewValue>(Func<TValue, TNewValue> valueConverter = null)"
@@ -58,27 +58,27 @@ export class Result<TValue = any> extends ResultBaseGeneric<Result<TValue>> {
 
   // #region Public Methods (4)
 
-  public Merge(result: Result<TValue>): Result<TValue> {
-    this.WithReasons(result.Reasons);
+  public merge(result: Result<TValue>): Result<TValue> {
+    this.withReasons(result.reasons);
     return this;
   }
 
-  public MergeWithValue<TNewValue>(result: Result<TValue>): Result<TValue> {
-    this.WithReasons(result.Reasons);
-    if (result.Value) {
+  public mergeWithValue<TNewValue>(result: Result<TValue>): Result<TValue> {
+    this.withReasons(result.reasons);
+    if (result.value) {
       // TODO Check if this type is set correctly
-      this.Value = result.Value;
+      this.value = result.value;
     }
     // TODO Check if the conversion is happening correctly
     return (this as unknown) as Result<TValue>;
   }
 
-  public ToResult<TNewValue = any>(): Result<TNewValue> {
-    return new Result<TNewValue>().WithReasons(this.Reasons);
+  public toResult<TNewValue = any>(): Result<TNewValue> {
+    return new Result<TNewValue>().withReasons(this.reasons);
   }
 
-  public WithValue(value: TValue): Result<TValue> {
-    this.Value = value;
+  public withValue(value: TValue): Result<TValue> {
+    this.value = value;
     return this;
   }
 
