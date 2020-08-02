@@ -1,6 +1,6 @@
 {
 	"name": "fluent-type-results",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "FluentTypeResults is a lightweight Typescript library built to solve a common problem - returning an object to either indicate success or failure of an operation instead of using exceptions.",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
