@@ -15,6 +15,8 @@ FluentTypeResults is the Typescript version of [FluentResults](https://github.co
 
 ## Installation
 
+[NPM Package](https://www.npmjs.com/package/fluent-type-results)
+
 ``` bash
 npm i fluent-type-results
 ```
